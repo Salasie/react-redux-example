@@ -17,6 +17,7 @@ class ListPerson extends Component{
         let personas = this.props.state.persona.personas || [];
 		return (
             <div>
+                <h1>Lista de personas</h1>
             {personas.valueSeq().map(person => {return <div key={person.id} >{person.nombre}</div>})} 
             </div>
         );

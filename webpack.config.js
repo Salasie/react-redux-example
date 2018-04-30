@@ -9,6 +9,7 @@ var PATH_BUILD = path.resolve(__dirname, 'dist');
 var PATH_SRC = path.resolve(__dirname, 'src');
 
 var config = {
+	mode: 'development',
 	entry: [
 		'./src/webpack-public-path',
     	PATH_SRC + '/index.jsx'
@@ -18,11 +19,12 @@ var config = {
 		filename:'bundle.js'
 	},
 	module: {
-		loaders: [
+
+		rules: [
 			{
 				test: /\.(js|jsx)$/,
 				include: PATH_SRC,
-				loader: 'babel',
+				use: 'babel-loader',
 				exclude: /node_modules/
 			}
 		]
