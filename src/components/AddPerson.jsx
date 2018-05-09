@@ -13,8 +13,6 @@ class AddPerson extends Component{
 
 
     addPersonEvent(event){
-        console.log(this.props.state)
-        console.log(this.state)
         event.preventDefault();
         this.props.addPerson({
             nombre:this.nombre.value,
@@ -36,15 +34,12 @@ class AddPerson extends Component{
 }
 
 const mapStateToProps = state => {
-    console.log('AddPerson mapStateToProps');
-    console.log(state);
   return {
     state
   }
 }
 
 const mapDispatchToProps = dispatch => {
-    console.log('AddPerson mapDispatchToProps ');
     return {
         addPerson: person => dispatch(addPerson(person))
     }

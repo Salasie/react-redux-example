@@ -1,13 +1,5 @@
 import * as types from '../constants/ActionsTypes';
 
-/*
-export function addPerson(person){
-	return{
-        type: types.ADD_PERSON,
-        person
-    }
-}*/
-
 export const addPerson = person => {
     return {
         type:types.ADD_PERSON,

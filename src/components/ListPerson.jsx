@@ -9,7 +9,6 @@ class ListPerson extends Component{
     }
 
 	render(){
-        console.log('ListPerson render');
 		return (
             <div>
                 Lista
@@ -21,16 +20,12 @@ class ListPerson extends Component{
 }
 
 const mapStateToProps = state => {
-    console.log('ListPerson mapStateToProps');
-    console.log(state.persona);
   return {
     personas:state.persona.personas
   }
 }
 
 const mapDispatchToProps = dispatch => {
-    console.log('ListPerson mapDispatchToProps');
-    //console.log(dispatch);    
     return {
         findPerson: () => dispatch(findPerson())
     }
