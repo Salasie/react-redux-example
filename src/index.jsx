@@ -4,7 +4,7 @@ import { BrowserRouter } from 'react-router-dom'
 
 import { render } from 'react-dom';
 import { Provider } from 'react-redux'
-import { createStore } from 'redux'
+import { applyMiddleware, createStore } from 'redux'
 //import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 
 import Login from './components/Login.jsx';
@@ -12,10 +12,24 @@ import Main from './components/Main.jsx';
 import AddPerson from './components/AddPerson.jsx';
 import ListPerson from './components/ListPerson.jsx';
 
+import logger from 'redux-logger'
+
 import reducers from './reducers'
 
-let store = createStore(reducers)
+let store = createStore(reducers, applyMiddleware(logger))
 
+class App extends Component{
+	render(){
+
+		return (
+			<Provider store={store}>
+				<Main></Main>
+			</Provider>
+		);
+	}
+}
+
+/*
 class App extends Component{
 	render(){
 
@@ -28,7 +42,7 @@ class App extends Component{
 		);
 	}
 }
-
+*/
 
 /*
 

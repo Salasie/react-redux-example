@@ -6,42 +6,31 @@ class ListPerson extends Component{
 
     constructor(props) {
         super(props);
-        //this.personas = [];
     }
 
 	render(){
-        console.log('this.props');
-        console.log(this.props);
-        this.props.findPerson();
-        //this.props.personas = this.props.store.persona.personas || [];
-        let personas = this.props.state.persona.personas || [];
+        console.log('ListPerson render');
 		return (
             <div>
-                <h1>Lista de personas</h1>
-            {personas.valueSeq().map(person => {return <div key={person.id} >{person.nombre}</div>})} 
+                Lista
+                {this.props.personas.map(person => {return <div key={person.id} >{person.nombre} {person.apellido}</div>})}   
             </div>
         );
+
 	}
 }
 
-/*
-ListPerson.propTypes = {
-  personas: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    nombre: PropTypes.string.isRequired,
-    apellido: PropTypes.string.isRequired
-  }).isRequired)
-};*/
-
 const mapStateToProps = state => {
-    console.log('store');
-    console.log(state);
+    console.log('ListPerson mapStateToProps');
+    console.log(state.persona);
   return {
-    state
+    personas:state.persona.personas
   }
 }
 
 const mapDispatchToProps = dispatch => {
+    console.log('ListPerson mapDispatchToProps');
+    //console.log(dispatch);    
     return {
         findPerson: () => dispatch(findPerson())
     }

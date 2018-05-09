@@ -29,6 +29,21 @@ class Main extends Component{
 	render(){
 		return (
 			<div>
+				Main
+				<AddPerson/>
+				<ListPerson/>
+			</div>
+		);
+	}
+}
+
+
+
+/*
+class Main extends Component{
+	render(){
+		return (
+			<div>
 			<h1>Main</h1>
 
       <ul>
@@ -60,7 +75,7 @@ class Main extends Component{
 			);
 	}
 }
-
+*/
 
 const Home = () => (
 	<div>
