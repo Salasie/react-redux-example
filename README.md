@@ -1,60 +1,84 @@
-1- Crear carpeta
+## Crear carpeta e ingresar en ella
 
-mkdir react-router
+    mkdir react-redux
+	cd react-redux
 
-2- Iniciar proyecto (creacion package.json)
+## Iniciar proyecto (creacion package.json)
 
-npm init
+    yarn init
 
-3- Crear README.md
+## Crear README.md
 
-4- Crear .gitignore
+	touch README.md
 
-"node_modules" para los modulos
-"dist" para el lugar donde dejaremos el bundle de webpack
+## Crear .gitignore
 
-5- Crear carpeta src donde tendremos las fuentes
+	touch .gitignore
 
-6- Añadir webpack
+El cual tendra la siguiente información:
 
-npm i webpack --save-dev
+    node_modules
+    dist
 
-7- Añadir archivo de configuracion webpack.config.js
+ - node_modules: para ignorar la carpeta "node_modules" que tiene las dependencias del proyecto
+ - dist: para ignorar el lugar donde dejaremos el bundle de webpack
 
-------------------------------------------
-'use strict'
+## Crear carpeta src donde tendremos las fuentes
 
-const path = require('path');
+    mkdir src
 
-// Path build
-var PATH_BUILD = path.resolve(__dirname, 'dist');
+## Añadir librerias webpack al package.json
 
-// Path src
-var PATH_SRC = path.resolve(__dirname, 'src');
+    yarn add -D webpack
+    yarn add -D webpack-cli
 
-var config = {
-	entry: PATH_SRC + '/index.jsx',
-	output: {
-		path: PATH_BUILD,
-		filename:'bundle.js'
-	}
-};
 
-module.exports = config;
--------------------------------------------
+## Añadir archivo de configuracion webpack.config.js
 
-8- Instalar servidor web para webpack (desarrollo)
 
-npm i webpack-dev-server --save.dev
-npm i http-server --save.dev
+    'use strict';
+    const path = require('path');
 
-9- Copiar la siguiente linea en script del package.json
+    // Path build
+    var PATH_BUILD = path.resolve(__dirname, 'dist');
+
+    // Path src
+    var PATH_SRC = path.resolve(__dirname, 'src');
+
+    var config = {
+    	mode: 'development',
+    	entry: [
+		    './src/webpack-public-path',
+    	    PATH_SRC + '/index.jsx'
+            ],
+	        output: {
+    	    path: PATH_BUILD,
+		    filename:'bundle.js'
+	        },
+	        module: {
+    	    rules: [
+			    {
+   	    		test: /\.(js|jsx)$/,
+   				include: PATH_SRC,
+    		    use: 'babel-loader',
+			    exclude: /node_modules/
+			    }
+		    ]
+    	}
+    };
+
+    module.exports = config;
+
+
+## Instalar servidor web para webpack (desarrollo)
+
+
+	yarn add -D webpack-dev-server
+	yarn add -D http-server
+
+## Copiar la siguiente linea en script del package.json
 
     "start": "webpack-dev-server --inline --content-base ./src"
-
-10- Añadir archivo webpack-public-path.js en la carpeta "src", es una rchivo para evita errores en webpack, contiene la siguiente información:
-__webpack_public_path__ = window.location.protocol + "//" + window.location.host + "/";
-
 
 11- Añadir index.jsx en la carpeta "src" con la siguiente info:
 
